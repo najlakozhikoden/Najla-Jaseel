@@ -84,6 +84,8 @@
   .flourish{color:var(--gold);font-size:1.6rem;margin:.4rem 0}
   .invite-line{font-style:italic;font-size:1.35rem;color:var(--ink)}
   #open{cursor:pointer;outline:none}
+  #intro .tap-hint{margin:1.8rem 0 0;font-style:normal;max-width:none;font-family:"Cinzel",serif;letter-spacing:.35em;text-transform:uppercase;font-size:.78rem;color:var(--gold-2);cursor:pointer;animation:hint 2.2s ease-in-out infinite}
+  @keyframes hint{50%{opacity:.45}}
   .couple{font-size:clamp(2.8rem,10vw,4.4rem);line-height:1.15;margin-top:1rem}
   .parents{color:var(--muted);font-size:1.05rem}
   /* details card */
@@ -242,6 +244,7 @@
 <!-- Intro -->
 <div id="intro">
   <div class="seal pulse" id="open" role="button" tabindex="0" aria-label="Open invitation"><span class="mono gold">N&nbsp;J</span></div>
+  <p class="tap-hint" id="tapHint">Tap to open</p>
 </div>
 
 <main>
@@ -390,6 +393,7 @@ let lastW = innerWidth;
 addEventListener("resize", () => { if(innerWidth === lastW) return; lastW = innerWidth; size(); draw(); }); size(); draw();
 
 // Intro + reveal
+document.getElementById("tapHint").onclick = () => document.getElementById("open").click();
 document.getElementById("open").onclick = () => {
   document.getElementById("intro").classList.add("gone");
   document.body.classList.remove("locked");
