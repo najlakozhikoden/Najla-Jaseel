@@ -172,6 +172,8 @@
   .framed .scroll-cue{margin-top:min(3rem,4vh);font-size:min(.8rem,1.9vh)}
   .framed .scroll-cue i{height:min(44px,5vh)}
   @media (max-height:600px){ .framed .scroll-cue{display:none} }
+  .house-line{color:var(--muted);font-style:italic;font-size:.95rem;opacity:.9}
+  .framed .house-line{font-size:min(.95rem,2.2vh);line-height:1.35}
   /* hosts */
   .hosts{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(1.6rem,5vw,2.1rem);margin-top:1rem}
   .address{color:var(--muted);font-size:1.05rem;margin-top:.3rem}
@@ -306,9 +308,11 @@
     <p class="invite-line reveal d2">With joy and gratitude, we invite you to celebrate the marriage of</p>
     <h1 class="couple script gold reveal d2">Najla Kozhikoden</h1>
     <p class="parents reveal d2">D/o Mujeebu Rahiman Kozhikoden &amp; Ummukulsu</p>
+    <p class="house-line reveal d2">Melakandi House, Parappaliyali, Omanoor</p>
     <div class="flourish reveal d3">&amp;</div>
     <h1 class="couple script gold reveal d3">Jaseel K M</h1>
     <p class="parents reveal d3">S/o Abdul Gafoor &amp; Fathimakutty</p>
+    <p class="house-line reveal d3">Maliyekkal House, Noonhikkara, Vazhakkad</p>
     <div class="scroll-cue reveal d3">SCROLL<i></i></div>
   </section>
 
@@ -316,7 +320,7 @@
   <section class="light">
     <div class="bismillah reveal">السلام عليكم ورحمة الله وبركاته</div>
     <p class="hosts gold reveal d1">Mr. Mujeebu Rahiman Kozhikoden<br>&amp; Mrs. Ummukulsu</p>
-    <p class="address reveal d1">Melekandi House, Parappaliyali, Omanoor</p>
+    <p class="address reveal d1">Melakandi House, Parappaliyali, Omanoor</p>
     <p class="request reveal d2">With the grace and blessings of Allah, we request the honour of your presence, along with your family, to grace the blessed Nikah of our beloved daughter.</p>
   </section>
 
@@ -394,23 +398,13 @@ function size(){
 function draw(){
   ctx.clearRect(0,0,c.width,c.height);
   for(const s of stars){
-    s.p += s.s; const a = .35 + Math.sin(s.p)*.35 + .3;
+    const a = .35 + Math.sin(s.p)*.35 + .3;
     ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
     ctx.fillStyle = s.gold ? `rgba(243,217,155,${a})` : `rgba(233,228,212,${a*.8})`; ctx.fill();
   }
-  if(!shooting && Math.random() < .004) shooting = {x: Math.random()*c.width*.7, y: Math.random()*c.height*.4, l: 0};
-  if(shooting){
-    const k = devicePixelRatio, d = 9*k; shooting.l++;
-    const g = ctx.createLinearGradient(shooting.x, shooting.y, shooting.x-80*k, shooting.y-40*k);
-    g.addColorStop(0,"rgba(243,217,155,.9)"); g.addColorStop(1,"rgba(243,217,155,0)");
-    ctx.strokeStyle = g; ctx.lineWidth = 1.4*k; ctx.beginPath();
-    ctx.moveTo(shooting.x, shooting.y); ctx.lineTo(shooting.x-80*k, shooting.y-40*k); ctx.stroke();
-    shooting.x += d; shooting.y += d/2; if(shooting.l > 45) shooting = null;
-  }
-  requestAnimationFrame(draw);
 }
 let lastW = innerWidth;
-addEventListener("resize", () => { if(innerWidth === lastW) return; lastW = innerWidth; size(); }); size(); draw();
+addEventListener("resize", () => { if(innerWidth === lastW) return; lastW = innerWidth; size(); draw(); }); size(); draw();
 
 // Intro + reveal
 document.getElementById("tapHint").onclick = () => document.getElementById("open").click();
