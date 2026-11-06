@@ -174,6 +174,28 @@
   @media (max-height:600px){ .framed .scroll-cue{display:none} }
   .house-line{color:var(--muted);font-style:italic;font-size:.95rem;opacity:.9}
   .framed .house-line{font-size:min(.95rem,2.2vh);line-height:1.35}
+  /* First page date block (like the shared card) */
+  .with-word{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.25rem;color:var(--muted);margin:.2rem 0}
+  .hero-date{margin-top:1.6rem}
+  .hd-row{display:grid;grid-template-columns:1fr auto auto auto 1fr;align-items:center;gap:0;max-width:340px;margin:0 auto}
+  .hd-day,.hd-my{font-family:"Cinzel",serif;letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;color:var(--gold-2);line-height:1.7}
+  .hd-day{text-align:center;padding-right:1rem}
+  .hd-my{text-align:center;padding-left:1rem}
+  .hd-bar{width:1px;height:52px;background:linear-gradient(transparent,var(--gold),transparent)}
+  .hd-num{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:2.6rem;line-height:1;padding:0 1.1rem;letter-spacing:.04em}
+  .hd-time{font-style:italic;color:var(--muted);font-size:1.15rem;margin-top:.9rem}
+  .framed .with-word + .couple{margin-top:.1rem}
+  /* Couple page */
+  .couple-sec{padding-top:6rem;padding-bottom:6rem}
+  .cp-name{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:600;font-size:clamp(2.2rem,8.5vw,3rem);line-height:1.2;margin-top:.3rem}
+  .cp-of{color:var(--ink);font-size:1.05rem;margin-top:.4rem;max-width:30ch}
+  .cp-house{color:var(--muted);font-style:italic;font-size:.98rem;margin-top:.15rem}
+  .couple-sec .divider{margin:2rem auto}
+  .couple-sec .divider span{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.2rem;color:var(--muted)}
+  .couple-sec .caps{margin-top:.2rem}
+  /* light versions of the date card and countdown */
+  .light .details{background:rgba(255,253,246,.75)}
+  .light .cd{background:#fffaf2}
   /* hosts */
   .hosts{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(1.6rem,5vw,2.1rem);margin-top:1rem}
   .address{color:var(--muted);font-size:1.05rem;margin-top:.3rem}
@@ -248,6 +270,9 @@
   footer h2{font-size:clamp(2.6rem,9vw,4rem)}
   footer .tag{margin:.6rem 0 2rem;color:var(--muted);letter-spacing:.2em;font-family:"Cinzel",serif;font-size:.8rem}
   body .couple,body .framed .couple{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:600;padding:0;font-size:min(clamp(2.45rem,9.3vw,4.8rem),8vh)}
+  /* first page: one line before Najla, one line after Jaseel */
+  body .framed .invite-line + .couple{margin-top:calc(min(1rem,1.6vh) + min(1.6rem,3vh))}
+  body .framed .hero-date{margin-top:calc(1.6rem + min(1.6rem,3vh))}
 </style>
 </head>
 <body class="locked">
@@ -305,15 +330,21 @@
       <svg class="side l"><use href="#rside"/></svg>
       <svg class="side r"><use href="#rside"/></svg>
     </div>
-    <div class="bismillah reveal d1" id="topBis">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
-    <p class="invite-line reveal d2" id="topLine">With joy and gratitude, we invite you to celebrate the marriage of</p>
+    <div class="bismillah reveal d1">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+    <p class="invite-line reveal d1">With joy and gratitude, we invite you to celebrate the marriage of</p>
     <h1 class="couple script gold reveal d2">Najla Kozhikoden</h1>
-    <p class="parents reveal d2">D/o Mujeebu Rahiman Kozhikoden &amp; Ummukulsu</p>
-    <p class="house-line reveal d2">Melakandi House, Parappaliyali, Omanoor</p>
-    <div class="flourish reveal d3">&amp;</div>
-    <h1 class="couple script gold reveal d3">Jaseel K M</h1>
-    <p class="parents reveal d3">S/o Abdul Gafoor &amp; Fathimakutty</p>
-    <p class="house-line reveal d3">Maliyekkal House, Noonhikkara, Vazhakkad</p>
+    <p class="with-word reveal d2">with</p>
+    <h1 class="couple script gold reveal d2">Jaseel K M</h1>
+    <div class="hero-date reveal d3">
+      <div class="hd-row">
+        <span class="hd-day">Sunday</span>
+        <span class="hd-bar"></span>
+        <b class="hd-num gold">29</b>
+        <span class="hd-bar"></span>
+        <span class="hd-my">November<br>2026</span>
+      </div>
+      <p class="hd-time">Nikah at 10:00 AM</p>
+    </div>
     <div class="scroll-cue reveal d3">SCROLL<i></i></div>
   </section>
 
@@ -325,8 +356,21 @@
     <p class="request reveal d2">With the grace and blessings of Allah, we request the honour of your presence, along with your family, to grace the blessed Nikah of our beloved daughter.</p>
   </section>
 
+  <!-- Couple -->
+  <section class="auto couple-sec">
+    <p class="caps reveal">The Bride</p>
+    <h2 class="cp-name gold reveal d1">Najla Kozhikoden</h2>
+    <p class="cp-of reveal d1">Daughter of Mr. Mujeebu Rahiman Kozhikoden &amp; Mrs. Ummukulsu</p>
+    <p class="cp-house reveal d1">Melakandi House, Parappaliyali, Omanoor</p>
+    <div class="divider reveal d2"><span>with</span></div>
+    <p class="caps reveal d2">The Groom</p>
+    <h2 class="cp-name gold reveal d3">Jaseel K M</h2>
+    <p class="cp-of reveal d3">Son of Mr. Abdul Gafoor &amp; Mrs. Fathimakutty</p>
+    <p class="cp-house reveal d3">Maliyekkal House, Noonhikkara, Vazhakkad</p>
+  </section>
+
   <!-- Calendar, details, countdown -->
-  <section>
+  <section class="light">
     <p class="caps reveal">Save the date</p>
 
     <div class="details reveal d1">
@@ -353,7 +397,7 @@
   </section>
 
   <!-- Venue -->
-  <section class="auto light">
+  <section class="auto">
     <p class="caps reveal">Join us at</p>
     <h2 class="venue-title reveal d1">Chaliyar Convention Center</h2>
     <div class="venue reveal d2">
@@ -363,7 +407,7 @@
   </section>
 
   <!-- Closing quote -->
-  <section class="auto quote-sec">
+  <section class="auto quote-sec light">
     <p class="quote reveal d1">Your presence and blessings will make this joyful occasion truly special.</p>
     <p class="initials reveal d2">N <span>&amp;</span> J</p>
   </section>
@@ -408,24 +452,31 @@ let lastW = innerWidth;
 addEventListener("resize", () => { if(innerWidth === lastW) return; lastW = innerWidth; size(); draw(); }); size(); draw();
 
 
-// First page: lift the Bismillah and opening line to the top; names stay where they are
-function liftTop(){
-  const sec = document.querySelector("section.framed"), bis = document.getElementById("topBis"), line = document.getElementById("topLine");
-  if(!sec || !bis || !line) return;
-  bis.style.translate = line.style.translate = "";
-  const want = sec.getBoundingClientRect().top + Math.max(64, innerHeight*.09) + 60; // two lines of space above the Bismillah
-  const names = sec.querySelector(".couple");
-  const keepGap = names ? line.getBoundingClientRect().bottom - names.getBoundingClientRect().top + 16 : 0; // never crowd the names
-  const shift = Math.max(0, bis.getBoundingClientRect().top - want, keepGap);
-  bis.style.translate = line.style.translate = `0 -${shift}px`;
-}
-addEventListener("load", liftTop);
-addEventListener("resize", liftTop);
-if(document.fonts && document.fonts.ready) document.fonts.ready.then(liftTop);
-liftTop();
-
 // Intro + reveal
 document.getElementById("tapHint").onclick = () => document.getElementById("open").click();
+
+// Gentle automatic scroll after the invitation opens; stops as soon as the guest touches or scrolls
+let autoScroll = null;
+function startAutoScroll(){
+  if(autoScroll) return;
+  const speed = 110; // pixels per second
+  let last = null, pos = scrollY, stopped = false;
+  const stop = () => { stopped = true; document.documentElement.style.scrollBehavior = ""; ["wheel","touchstart","keydown","mousedown"].forEach(ev => removeEventListener(ev, stop)); };
+  ["wheel","touchstart","keydown","mousedown"].forEach(ev => addEventListener(ev, stop, {passive:true}));
+  autoScroll = true;
+  document.documentElement.style.scrollBehavior = "auto"; // smooth-scroll CSS would freeze frame-by-frame scrolling
+  const step = t => {
+    if(stopped) return;
+    if(last === null){ last = t; pos = scrollY; }
+    pos += speed * (t - last) / 1000; last = t;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    if(pos >= max){ scrollTo(0, max); return; }
+    scrollTo(0, pos);
+    requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
 let opened = false, userPaused = false;
 function openInvite(byTap){
   if(opened){ if(byTap && !playing) playMusic(); return; }
@@ -441,6 +492,7 @@ function openInvite(byTap){
   }
   const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.15});
   document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  setTimeout(startAutoScroll, 2000);
 }
 document.getElementById("open").onclick = () => openInvite(true);
 setTimeout(() => openInvite(false), 2000);
