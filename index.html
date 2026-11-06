@@ -162,6 +162,16 @@
   .royal .crest.bot{bottom:-17px;transform:translateX(-50%) scaleY(-1)}
   .royal .side{position:absolute;top:50%;width:22px;height:70px;transform:translateY(-50%)}
   .royal .side.l{left:-11px}.royal .side.r{right:-11px}
+  /* First page always fits one phone screen */
+  section.framed{min-height:100vh;min-height:100svh;height:100vh;height:100svh;padding:clamp(3.2rem,9vh,5.5rem) 2.4rem clamp(2.6rem,7vh,4.5rem);overflow:hidden}
+  .framed .bismillah{font-size:min(1.7rem,4.3vh);margin-bottom:0}
+  .framed .invite-line{font-size:min(1.35rem,3.1vh);line-height:1.45}
+  .framed .couple{font-size:min(clamp(2.2rem,8.4vw,4.4rem),7.2vh);margin-top:min(1rem,1.6vh)}
+  .framed .parents{font-size:min(1.05rem,2.5vh);line-height:1.4}
+  .framed .flourish{font-size:min(1.6rem,3.6vh);margin:min(.4rem,.8vh) 0}
+  .framed .scroll-cue{margin-top:min(3rem,4vh);font-size:min(.8rem,1.9vh)}
+  .framed .scroll-cue i{height:min(44px,5vh)}
+  @media (max-height:600px){ .framed .scroll-cue{display:none} }
   /* hosts */
   .hosts{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(1.6rem,5vw,2.1rem);margin-top:1rem}
   .address{color:var(--muted);font-size:1.05rem;margin-top:.3rem}
