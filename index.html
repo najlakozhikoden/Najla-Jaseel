@@ -394,13 +394,23 @@ function size(){
 function draw(){
   ctx.clearRect(0,0,c.width,c.height);
   for(const s of stars){
-    const a = .35 + Math.sin(s.p)*.35 + .3;
+    s.p += s.s; const a = .35 + Math.sin(s.p)*.35 + .3;
     ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
     ctx.fillStyle = s.gold ? `rgba(243,217,155,${a})` : `rgba(233,228,212,${a*.8})`; ctx.fill();
   }
+  if(!shooting && Math.random() < .004) shooting = {x: Math.random()*c.width*.7, y: Math.random()*c.height*.4, l: 0};
+  if(shooting){
+    const k = devicePixelRatio, d = 9*k; shooting.l++;
+    const g = ctx.createLinearGradient(shooting.x, shooting.y, shooting.x-80*k, shooting.y-40*k);
+    g.addColorStop(0,"rgba(243,217,155,.9)"); g.addColorStop(1,"rgba(243,217,155,0)");
+    ctx.strokeStyle = g; ctx.lineWidth = 1.4*k; ctx.beginPath();
+    ctx.moveTo(shooting.x, shooting.y); ctx.lineTo(shooting.x-80*k, shooting.y-40*k); ctx.stroke();
+    shooting.x += d; shooting.y += d/2; if(shooting.l > 45) shooting = null;
+  }
+  requestAnimationFrame(draw);
 }
 let lastW = innerWidth;
-addEventListener("resize", () => { if(innerWidth === lastW) return; lastW = innerWidth; size(); draw(); }); size(); draw();
+addEventListener("resize", () => { if(innerWidth === lastW) return; lastW = innerWidth; size(); }); size(); draw();
 
 // Intro + reveal
 document.getElementById("tapHint").onclick = () => document.getElementById("open").click();
